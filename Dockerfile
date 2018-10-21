@@ -29,10 +29,22 @@ ADD guestbook.php /var/www/html/guestbook.php
 ADD controllers.js /var/www/html/controllers.js
 ADD index.html /var/www/html/index.html
 
-RUN find / -name "apache2"
-
 #Change access righs to conf, logs, bin from root to www-data
-RUN chown -hR www-data:www-data /etc/apache2/ && chown -hR www-data:www-data /usr/local/bin/ && chown -hR www-data:www-data /var/log/apache2/
+RUN chown -hR www-data:www-data /usr/local/bin/ \
+      /etc/cron.daily/apache2 \
+      /etc/init.d/apache2 \
+      /etc/logrotate.d/apache2 \
+      /etc/apache2 \
+      /run/lock/apache2 \
+      /run/apache2 \
+      /usr/lib/apache2 \
+      /usr/sbin/apache2 \
+      /usr/share/bug/apache2 \
+      /usr/share/doc/apache2 \
+      /usr/share/apache2 \
+      /var/cache/apache2 \
+      /var/lib/apache2 \
+      /var/log/apache2
 
 #Run as user www-data
 USER www-data
