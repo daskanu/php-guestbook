@@ -29,8 +29,9 @@ ADD guestbook.php /var/www/html/guestbook.php
 ADD controllers.js /var/www/html/controllers.js
 ADD index.html /var/www/html/index.html
 
+RUN ls /etc/apache2/ && ls /usr/local/bin/
 #Change access righs to conf, logs, bin from root to www-data
-RUN chown -hR www-data:www-data /usr/local/apache2/
+RUN chown -hR www-data:www-data /etc/apache2/
 
 #Setcap to bind to privileged ports as non-root
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/apache2/bin/httpd
