@@ -29,10 +29,8 @@ ADD guestbook.php /var/www/html/guestbook.php
 ADD controllers.js /var/www/html/controllers.js
 ADD index.html /var/www/html/index.html
 
-RUN find / -name "access.log"
-
 #Change access righs to conf, logs, bin from root to www-data
-RUN chown -hR www-data:www-data /etc/apache2/ && chown -hR www-data:www-data /usr/local/bin/
+RUN chown -hR www-data:www-data /etc/apache2/ && chown -hR www-data:www-data /usr/local/bin/ && chown -hR www-data:www-data /var/log/apache2/
 
 #Run as user www-data
 USER www-data
